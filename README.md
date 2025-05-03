@@ -14,6 +14,7 @@ A full-stack application that lets users draw digits in their browser and have t
 
 ```
 nn-for-handwritten-digits/
+├── saved_model.pkl        # trained model (ignored via .gitignore)
 ├── digit-frontend/          # React application
 │   ├── public/
 │   └── src/
@@ -30,7 +31,6 @@ nn-for-handwritten-digits/
         ├── predict.py
         ├── load_data.py
         ├── train.py
-        └── model.pkl        # (ignored via .gitignore)
 ```
 
 nn-for-handwritten-digits/
@@ -145,4 +145,5 @@ Open `http://localhost:3000` in your browser.
 ## Contributing
 
 Feel free to open issues or pull requests. Suggestions for UI, UX, or model improvements are welcome.
+
 
