@@ -52,7 +52,7 @@ nn-for-handwritten-digits/
    ```bash
    git clone https://github.com/your-username/nn-for-handwritten-digits.git
    cd nn-for-handwritten-digits
-````
+
 
 2. **Install backend dependencies**
 
