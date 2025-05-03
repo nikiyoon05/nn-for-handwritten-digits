@@ -1,0 +1,37 @@
+.canvas-container {
+    text-align: center;
+    margin-top: 15px;
+  
+  }
+  
+  canvas {
+    border: 2px solid #fff;
+    background-color: black;
+    
+  }
+
+  .canvas-container canvas{
+    width: 280px;
+    height: 280px;
+    image-rendering: pixelated;
+    
+  }
+  
+
+  button {
+    font-weight: 600;
+    width: 100px;
+    height: 30px;
+    font-size: 18px;
+    color: #3e7057;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    margin: 10px;
+    transition-duration: .2s;
+
+  }
+
+  button:hover{
+    background-color: #b4e0ca;
+  }
