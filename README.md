@@ -28,29 +28,49 @@ nn-for-handwritten-digits/
     └── Model/
         ├── neural_network.py
         ├── predict.py
+        ├── load_data.py
+        ├── train.py
         └── model.pkl        # (ignored via .gitignore)
 ```
 
+nn-for-handwritten-digits/
+├── digit-frontend/          # React application
+│   ├── public/
+│   └── src/
+│       ├── App.js
+│       ├── digitcanvas.js
+│       ├── App.css
+│       └── DigitCanvas.css
+├── backend/                 # Flask server
+│   ├── app.py
+│   └── requirements.txt
+└── src/                     # Model and preprocessing code
+└── Model/
+├── neural\_network.py
+├── predict.py
+└── model.pkl        # (ignored via .gitignore)
+
+````
+
 ## Tech Stack
 
-* **Frontend**: React, HTML5 Canvas API
-* **Backend**: Python, Flask, Flask-CORS, Pillow, NumPy
-* **Model**: Custom neural network trained on MNIST
+- **Frontend**: React, HTML5 Canvas API
+- **Backend**: Python, Flask, Flask-CORS, Pillow, NumPy
+- **Model**: Custom neural network trained on MNIST
 
 ## Prerequisites
 
-* **Node.js** & **npm** (v14+)
-* **Python** (3.8+)
-* **pip**
+- **Node.js** & **npm** (v14+)
+- **Python** (3.8+)
+- **pip**
 
 ## Installation
 
 1. **Clone the repository**
-
    ```bash
    git clone https://github.com/your-username/nn-for-handwritten-digits.git
    cd nn-for-handwritten-digits
-   ```
+````
 
 2. **Install backend dependencies**
 
