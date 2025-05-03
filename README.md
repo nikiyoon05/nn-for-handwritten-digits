@@ -34,6 +34,9 @@ nn-for-handwritten-digits/
 ```
 
 
+
+
+
 ## Tech Stack
 
 - **Frontend**: React, HTML5 Canvas API
@@ -59,16 +62,30 @@ nn-for-handwritten-digits/
    ```bash
    cd backend
    python3 -m venv venv
-   source venv/bin/activate   # Windows: venv\Scripts\activate
+   source venv/bin/activate   # (or venv/Scripts/activate on Windows)
    pip install -r requirements.txt
    ```
 
-3. **Install frontend dependencies**
+3. **Prepare the frontend scaffold**
+
+   * If you used Create React App, `digit-frontend/` should already contain `package.json`, `public/`, and `src/`.
+   * Otherwise, initialize a new React project:
+
+     ```bash
+     cd digit-frontend
+     npm init -y
+     npm install react react-dom
+     ```
+
+4. **Install frontend dependencies**
 
    ```bash
-   cd ../digit-frontend
+   cd digit-frontend
    npm install
    ```
+
+5. **Download MNIST data** (for training only)
+   Place the official MNIST `.idx3-ubyte` and `.idx1-ubyte` files into a `data/` folder at the project root.
 
 ## Running Locally
 
@@ -102,6 +119,8 @@ Open `http://localhost:3000` in your browser.
 * **GET** `/ping`
   Response: `{ "message": "pong" }`
 
+
+
 ## Deployment
 
 ### Frontend (Netlify or Vercel)
@@ -128,4 +147,6 @@ Open `http://localhost:3000` in your browser.
 
 Feel free to open issues or pull requests. Suggestions for UI, UX, or model improvements are welcome.
 
+## License
 
+MIT © Your Name
