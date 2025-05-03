@@ -33,24 +33,6 @@ nn-for-handwritten-digits/
         ├── train.py
 ```
 
-nn-for-handwritten-digits/
-├── digit-frontend/          # React application
-│   ├── public/
-│   └── src/
-│       ├── App.js
-│       ├── digitcanvas.js
-│       ├── App.css
-│       └── DigitCanvas.css
-├── backend/                 # Flask server
-│   ├── app.py
-│   └── requirements.txt
-└── src/                     # Model and preprocessing code
-└── Model/
-├── neural\_network.py
-├── predict.py
-└── model.pkl        # (ignored via .gitignore)
-
-````
 
 ## Tech Stack
 
