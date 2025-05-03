@@ -147,6 +147,3 @@ Open `http://localhost:3000` in your browser.
 
 Feel free to open issues or pull requests. Suggestions for UI, UX, or model improvements are welcome.
 
-## License
-
-MIT © Your Name
