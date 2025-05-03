@@ -1,127 +1,131 @@
-Handwritten Digit Recognition Web App
+# Handwritten Digit Recognition Web App
 
-A full‑stack application that lets users draw digits in their browser and have them recognized by a neural network trained on the MNIST dataset. The project includes a React frontend with a drawing canvas and a Flask backend that preprocesses the image and returns the predicted digit.
+A full-stack application that lets users draw digits in their browser and have them recognized by a neural network trained on the MNIST dataset. The project includes a React frontend with a drawing canvas and a Flask backend that preprocesses the image and returns the predicted digit.
 
-🚀 Features
+## Features
 
-Interactive Drawing Canvas: Draw digits with smooth strokes in the browser.
+* **Interactive Drawing Canvas**: Draw digits with smooth strokes in the browser.
+* **Real-Time Prediction**: Click **Predict** to send your drawing to the backend and get an instant result.
+* **Clear & Reset**: Erase the canvas and reset the prediction display with a single click.
+* **Submission History**: (Optional) View past predictions via a `/history` endpoint.
+* **Deployable**: Ready for deployment on Netlify/Vercel (frontend) and Render/Heroku (backend).
 
-Real‑Time Prediction: Click Predict to send your drawing to the backend and get an instant result.
+## Project Structure
 
-Clear & Reset: Erase the canvas and reset the prediction display with a single click.
-
-Submission History: (Optional) View past predictions via a /history endpoint.
-
-Deployable: Ready for deployment on Netlify/Vercel (frontend) and Render/Heroku (backend).
-
-🗂️ Project Structure
-
+```
 nn-for-handwritten-digits/
-├── digit-frontend/        # React application
+├── digit-frontend/          # React application
 │   ├── public/
 │   └── src/
 │       ├── App.js
 │       ├── digitcanvas.js
 │       ├── App.css
 │       └── DigitCanvas.css
-├── backend/               # Flask server
+├── backend/                 # Flask server
 │   ├── app.py
 │   └── requirements.txt
-└── src/                   # Model and preprocessing
+└── src/                     # Model and preprocessing code
     └── Model/
         ├── neural_network.py
         ├── predict.py
-        └── model.pkl      # (ignored in .gitignore)
+        └── model.pkl        # (ignored via .gitignore)
+```
 
-🛠️ Tech Stack
+## Tech Stack
 
-Frontend: React, HTML5 Canvas API
+* **Frontend**: React, HTML5 Canvas API
+* **Backend**: Python, Flask, Flask-CORS, Pillow, NumPy
+* **Model**: Custom neural network trained on MNIST
 
-Backend: Python, Flask, Flask‑CORS, Pillow, NumPy
+## Prerequisites
 
-Model: Custom neural network trained on MNIST (Python pickle)
+* **Node.js** & **npm** (v14+)
+* **Python** (3.8+)
+* **pip**
 
-💾 Prerequisites
+## Installation
 
-Node.js & npm (v14+)
+1. **Clone the repository**
 
-Python (3.8+)
+   ```bash
+   git clone https://github.com/your-username/nn-for-handwritten-digits.git
+   cd nn-for-handwritten-digits
+   ```
 
-pip (Python package manager)
+2. **Install backend dependencies**
 
-⚙️ Installation & Setup
+   ```bash
+   cd backend
+   python3 -m venv venv
+   source venv/bin/activate   # Windows: venv\Scripts\activate
+   pip install -r requirements.txt
+   ```
 
-1. Clone the repository
+3. **Install frontend dependencies**
 
-git clone https://github.com/your‑username/nn‑for‑handwritten‑digits.git
-cd nn‑for‑handwritten‑digits
+   ```bash
+   cd ../digit-frontend
+   npm install
+   ```
 
-2. Install the backend dependencies
+## Running Locally
 
+### Backend
+
+```bash
 cd backend
-python3 -m venv venv
-source venv/bin/activate   # Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-3. Install the frontend dependencies
-
-cd ../digit-frontend
-npm install
-
-▶️ Running Locally
-
-Backend
-
-cd backend
-# development mode with hot‑reload
 export FLASK_APP=app.py
 export FLASK_ENV=development
-flask run
+flask run --port=5001
+```
 
-By default, the server listens at http://localhost:5001 (or port specified in app.py).
+### Frontend
 
-Frontend
-
+```bash
 cd digit-frontend
 npm start
+```
 
-This will open http://localhost:3000 in your browser.
+Open `http://localhost:3000` in your browser.
 
-📡 API Endpoints
+## API Endpoints
 
-POST /predict
+* **POST** `/predict`
+  Request body: `{ "image": "data:image/png;base64,..." }`
+  Response: `{ "prediction": <digit> }`
 
-Request body: { "image": "data:image/png;base64,..." }
+* **GET** `/history`
+  Response: `{ "history": [ { "image": "...", "prediction": <digit> }, ... ] }`
 
-Response: { "prediction": <digit> }
+* **GET** `/ping`
+  Response: `{ "message": "pong" }`
 
-GET /history
+## Deployment
 
-Response: { "history": [ { "image": "...", "prediction": <digit> }, ... ] }
+### Frontend (Netlify or Vercel)
 
-GET /ping
+1. Build:
 
-Response: { "message": "pong" }
+   ```bash
+   cd digit-frontend
+   npm run build
+   ```
+2. Deploy the `build/` folder on Netlify or Vercel.
 
-🚀 Deployment
+### Backend (Render or Heroku)
 
-Frontend build:
+1. Ensure you have a `requirements.txt` and a `Procfile`:
 
-cd digit-frontend
-npm run build
+   ```text
+   web: gunicorn app:app --bind 0.0.0.0:$PORT
+   ```
+2. Push the `backend/` folder to Render or Heroku.
+3. Update the frontend's API URL in `App.js` to point to your production backend.
 
-Host the contents of build/ on Netlify, Vercel, or any static‑site host.
+## Contributing
 
-Backend deploy:
+Feel free to open issues or pull requests. Suggestions for UI, UX, or model improvements are welcome.
 
-Create a requirements.txt and a Procfile:
+## License
 
-web: gunicorn app:app --bind 0.0.0.0:$PORT
-
-Push to Render, Heroku, or similar.
-
-Update your frontend’s API URL in App.js to point at the production backend.
-
-🤝 Contributing
-
-Feel free to open issues or pull requests. Suggestions for improvement (UI, UX, model accuracy) are welcome!
+MIT © Your Name
