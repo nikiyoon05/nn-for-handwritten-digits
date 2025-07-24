@@ -114,6 +114,22 @@ def history():
     return jsonify({'history': submission_history})
 
 
+@app.route('/', methods=['GET'])
+def root():
+    """
+    Root endpoint - API information
+    """
+    return jsonify({
+        'message': 'Neural Network Digit Recognition API',
+        'status': 'running',
+        'endpoints': {
+            'POST /predict': 'Submit base64 image for digit prediction',
+            'GET /history': 'View prediction history',
+            'GET /ping': 'Health check'
+        },
+        'frontend_url': 'https://digit-recognition-frontend.onrender.com'
+    })
+
 @app.route('/ping', methods=['GET'])
 def ping():
     """
