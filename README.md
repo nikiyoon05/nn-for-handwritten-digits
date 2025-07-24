@@ -1,6 +1,7 @@
 # Handwritten Digit Recognition Web App
 
 Frontend deployed: https://nn-for-handwritten-digits-frontend.onrender.com/
+
 A full-stack application that lets users draw digits in their browser and have them recognized by a neural network trained on the MNIST dataset. The project includes a React frontend with a drawing canvas and a Flask backend that preprocesses the image and returns the predicted digit.
 
 ![Screenshot 2025-05-03 at 2 40 38 AM](https://github.com/user-attachments/assets/651ad640-55ff-445c-973d-71282ffc57d1)
