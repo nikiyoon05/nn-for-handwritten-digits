@@ -2,7 +2,6 @@
 import pickle
 import gzip
 import numpy as np
-
 import struct
 import os
 

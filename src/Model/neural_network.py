@@ -1,16 +1,19 @@
-#libraries
+# libraries
 import numpy as np
 import random
 
 """
-Basic class for a neural network for recognizing handwritten digits.
+Basic class for a neural network for recognizing handwritten digits. The number of inner layers 
+can be customized. Ex. Initialize the network with 784 input neurons, hidden neurons, and 10 output neurons:
+    net = Network([784, 100, 10])
+Uses a simple backprop algorithm with stochastic gradient descent. Sigmoid as the activation function. 
 """
 
-#sigmoid function
+# sigmoid function
 def sigmoid(z):
     return 1/(1+np.exp(-z))
 
-#derivative of sigmoid function
+# derivative of sigmoid function
 def sigmoid_prime(z):
     return sigmoid(z)* (1-sigmoid(z))
 
@@ -80,17 +83,17 @@ class Network(object):
         nabla_w = [np.zeros(w.shape) for w in self.weights]
         activation = x
 
-        activations = [x] #store activations (after sigmoid) for each layer
-        zs = [] #store weighted inputs for each layer
+        activations = [x] # store activations (after sigmoid) for each layer
+        zs = [] # store weighted inputs for each layer
         
-        #forward prop
+        # forward prop
         for b, w in zip(self.biases, self.weights):
             z = np.dot(w, activation) + b
             zs.append(z)
             activation = sigmoid(z)
             activations.append(activation)
         
-        #backward pass: compute delta for output layer
+        # backward pass: compute delta for output layer
         delta = self.cost_derivative(activations[-1], y) * sigmoid_prime(zs[-1])
         nabla_b[-1] = delta
         nabla_w[-1] = np.dot(delta, activations[-2].T)

@@ -1,40 +1,72 @@
+"""
+Digit Recognition Script
+
+This script loads a trained neural network from a pickle file and uses it to 
+predict the digit shown in an input image. It also provides a utility function 
+for predicting digits using a preprocessed input vector.
+
+Dependencies:
+ - neural_network.py (contains the `Network` class)
+ - saved_model.pkl (trained model file)
+ -  Pillow, NumPy, and pickle
+"""
+
 from neural_network import Network
 import pickle
-from PIL import Image
+from PIL import Image, ImageOps
 import numpy as np
-from PIL import ImageOps
+import os
 
 def predict():
+    """
+    Loads an image, preprocesses it, and predicts the digit using a trained neural network.
+    """
+    # Load trained model from pickle file
     with open("saved_model.pkl", "rb") as f:
         model_data = pickle.load(f)
 
+    # Reconstruct the neural network
     net = Network(model_data["sizes"])
     net.biases = model_data["biases"]
     net.weights = model_data["weights"]
 
-    img = Image.open("sample_images/6.jpg")
-    img_adjusted = img.convert("L").resize((28, 28))
-    img_adjusted = ImageOps.invert(img_adjusted)
-    
-    img_adjusted.save("processed_img.png")
+    # Load and preprocess image
+    img = Image.open("sample_images/6.jpg")       # Load input image
+    img_adjusted = img.convert("L").resize((28, 28))   # Convert to grayscale and resize
+    img_adjusted = ImageOps.invert(img_adjusted)      # Invert colors (white digit on black background)
 
-    img_array = np.array(img_adjusted).astype(np.float32)/255.0
+    img_adjusted.save("processed_img.png")             
+
+    # Normalize pixel values and flatten into 784x1 vector
+    img_array = np.array(img_adjusted).astype(np.float32) / 255.0
     img_flat = img_array.reshape(784, 1)
 
+    # Predict and print result
     prediction = net.predict(img_flat)
+    print("Predicted digit:", prediction)
 
-    print("Predicted digit:", prediction)   
-
-#Returns a preprocessed image (grayscale, 28x28 stored in a 784 x 1 vector)
 def predictNum(img_flat):
-    with open("../saved_model.pkl", "rb") as f:
+    """
+    Predicts the digit from a preprocessed 784x1 input vector.
+
+    Parameters:
+    img_flat (np.ndarray): A flattened and normalized (784, 1) image vector
+
+    Returns:
+    int: Predicted digit
+    """
+    # Get the directory where this script is located
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    model_path = os.path.join(script_dir, "..", "..", "saved_model.pkl")
+    
+    with open(model_path, "rb") as f:
         model_data = pickle.load(f)
 
     net = Network(model_data["sizes"])
     net.biases = model_data["biases"]
     net.weights = model_data["weights"]
-    prediction = net.predict(img_flat)
-    return prediction
+    
+    return net.predict(img_flat)
 
 if __name__ == "__main__":
     predict()

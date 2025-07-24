@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 
-export default function DigitCanvas({ onSubmit }) {
+export default function DigitCanvas({ onSubmit, onClear }) {
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
 
@@ -39,6 +39,7 @@ export default function DigitCanvas({ onSubmit }) {
   const clearCanvas = () => {
     const ctx = canvasRef.current.getContext("2d");
     ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    if (onClear) onClear();
   };
 
   const submitImage = () => {
