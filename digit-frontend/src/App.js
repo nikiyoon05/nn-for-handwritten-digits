@@ -40,7 +40,12 @@ function App() {
         <span className="author">Niki Yoon</span> to recognize handwritten digits!
       </h1>
 
-      <p id="spin-up-notice">
+      <p id="spin-up-notice" style={{
+        color: 'white',
+        textAlign: 'center',
+        marginTop: '10px',
+        fontStyle: 'italic'
+      }}>
         <strong>Note:</strong> This app is hosted on Render's free tier. If you're the first visitor in a while, it may take a minute to spin up. Thanks for your patience!
       </p>
 
